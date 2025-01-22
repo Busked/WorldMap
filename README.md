@@ -10,5 +10,5 @@ Joe Liang
 Angular CLI: 17.3.8
 Node.js: 18.17.0
 Package Manager: npm 9.6.7
-Operating System: Windows x64
+Operating System: windows x64
 Angular Version: 17.3.12
