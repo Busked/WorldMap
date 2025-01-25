@@ -8,7 +8,6 @@ Joe Liang
 ## Angular Project Configuration
 
 Angular CLI: 17.3.8
-Node.js: 18.17.0
-Package Manager: npm 9.6.7
-Operating System: windows x64
-Angular Version: 17.3.12
+Node: 22.13.0 (Unsupported)
+Package Manager: npm 10.9.2
+OS: win32 x64
