@@ -69,7 +69,7 @@ export class WorldmapComponent implements OnInit {
       target.style.fill = '#ff4500'; // Highlight selected country
     }
     if (this.countryId) {
-      this.fetchInfoAboutCountry(this.countryId);
+      this.FetchInfoCountry(this.countryId);
     }
   }
 
@@ -77,7 +77,7 @@ export class WorldmapComponent implements OnInit {
    * Fetches information about a country from the World Bank API.
    * @param countryCode The country code (e.g., US, CN, FR)
    */
-  fetchInfoAboutCountry(countryCode: string): void {
+  FetchInfoCountry(countryCode: string): void {
     // Get country general info (e.g., capital, region, income level)
     this.countryService.getCountryInfo(countryCode).subscribe({
       next: (data) => {
