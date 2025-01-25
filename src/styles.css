@@ -11,7 +11,7 @@
 }
 
 body {
-  font-family: "Arial";
+  font-family: "Arial", "Comic Sans MS", Helvetica, sans-serif;
   background-size: 400% 400%;
   animation: gradient-shift 8s ease infinite;
   color: #fff;
