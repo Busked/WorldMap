@@ -12,9 +12,7 @@ export class CountryinfoComponent {
   @Input() countryCapital: string | null = null;
   @Input() countryRegion: string | null = null;
   @Input() countryIncomeLevel: string | null = null;
-  @Input() countryAdditionalFactOne: string | null = null;
-  @Input() countryAdditionalFactTwo: string | null = null;
+  @Input() countryPopulation: string | null = null;
+  @Input() countryGDP: string | null = null;
   @Input() countryCode: string | null = null
-  @Input() countryGDP: string | null = null
-  @Input() countryPopulation: string | null = null
 }

@@ -13,15 +13,17 @@ import { CountryService } from '../country.service';
 })
 export class WorldmapComponent implements OnInit {
 
+  // Country information
   countryName: string | null = null;
   countryCapital: string | null = null;
   countryRegion: string | null = null;
   countryIncomeLevel: string | null = null;
-  countryAdditionalFactOne: string | null = null; // Population
-  countryAdditionalFactTwo: string | null = null; // GDP
+  countryPopulation: string | null = null; // Population
+  countryGDP: string | null = null; // GDP
   countryId: string | null = null;
   countryCode: string | null = null;
 
+  // Services
   constructor(private countryService: CountryService, private http: HttpClient, private el: ElementRef) {}
 
   ngOnInit(): void {
@@ -33,6 +35,11 @@ export class WorldmapComponent implements OnInit {
     });
   }
 
+  /**
+   * Adds mouse click event listeners to each path element in the SVG.
+   * When a path element is clicked, the onPathClick() event handler is called.
+   * @param container The container element containing the SVG paths.
+   */
   private addEventListeners(container: HTMLElement): void {
     // Adding mouse click event handlers
     const paths = container.querySelectorAll('path');
@@ -41,6 +48,11 @@ export class WorldmapComponent implements OnInit {
     });
   }
 
+  /**
+   * Event handler for when a country is clicked.
+   * Resets the colors of all paths and highlights the selected country.
+   * @param event The event object from the click event.
+   */
   onPathClick(event: Event): void {
     const paths = this.el.nativeElement.querySelectorAll('path');
     paths.forEach((path: any) => {
@@ -61,6 +73,10 @@ export class WorldmapComponent implements OnInit {
     }
   }
 
+  /**
+   * Fetches information about a country from the World Bank API.
+   * @param countryCode The country code (e.g., US, CN, FR)
+   */
   fetchInfoAboutCountry(countryCode: string): void {
     // Get country general info (e.g., capital, region, income level)
     this.countryService.getCountryInfo(countryCode).subscribe({
@@ -84,11 +100,11 @@ export class WorldmapComponent implements OnInit {
       next: (data) => {
         if (data && data[1] && data[1].length > 0) {
           const populationData = data[1][0];
-          this.countryAdditionalFactOne = populationData.value
+          this.countryPopulation = populationData.value
             ? `${parseInt(populationData.value).toLocaleString()} people`
             : 'Not Available';
         } else {
-          this.countryAdditionalFactOne = 'Not Available';
+          this.countryPopulation = 'Not Available';
         }
       },
       error: (error) => {
@@ -101,11 +117,11 @@ export class WorldmapComponent implements OnInit {
       next: (data) => {
         if (data && data[1] && data[1].length > 0) {
           const gdpData = data[1][0];
-          this.countryAdditionalFactTwo = gdpData.value
+          this.countryGDP = gdpData.value
             ? `$${parseFloat(gdpData.value).toFixed(2)}`
             : 'Not Available';
         } else {
-          this.countryAdditionalFactTwo = 'Not Available';
+          this.countryGDP = 'Not Available';
         }
       },
       error: (error) => {
@@ -114,3 +130,4 @@ export class WorldmapComponent implements OnInit {
     });
   }
 }
+
