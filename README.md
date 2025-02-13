@@ -1,9 +1,6 @@
 # World Map Project D280
-Joe Liang
-
 ## Student Information
 
-**Student ID**: 012476145
 
 ## Angular Project Configuration
 
